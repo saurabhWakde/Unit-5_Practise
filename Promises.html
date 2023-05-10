@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises </title>
+</head>
+<body>
+    <h1> Vaccine Booth alert System</h1>
+    Name: <input type="text" placeholder="Enter Name Here" id="name">
+    <button id="Btn">Register</button>+
+    <h2>Current Turn: <span id="turn"></span></h2>
+</body>
+<script>
+    /*
+    #Promise:A promise is an Javascript Object that keeps tracks of eventual completion (resoolve) or failure (reject)  of any asynchronous task.  
+    #three things happen to promises /three States.
+    # state
+    -pending.
+    -resolve / fulfil promise.
+    -reject / promise.
+
+    #Two Properties: state, result.
+
+
+
+    MDNdocs--
+    Promise
+#The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+#To learn about the way promises work and how you can use them, we advise you to read Using promises first.
+
+#Description
+#A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
+
+#A Promise is in one of these states:
+
+pending: initial state, neither fulfilled nor rejected.
+fulfilled: meaning that the operation was completed successfully.
+rejected: meaning that the operation failed.
+The eventual state of a pending promise can either be fulfilled with a value or rejected with a reason (error). When either of these options occur, the associated handlers queued up by a promise's then method are called. If the promise has already been fulfilled or rejected when a corresponding handler is attached, the handler will be called, so there is no race condition between an asynchronous operation completing and its handlers being attached.
+
+A promise is said to be settled if it is either fulfilled or rejected, but not pending.
+
+Flowchart showing how the Promise state transitions between pending, fulfilled, and rejected via then/catch handlers. A pending promise can become either fulfilled or rejected. If fulfilled, the "on fulfillment" handler, or first parameter of the then() method, is executed and carries out further asynchronous actions. If rejected, the error handler, either passed as the second parameter of the then() method or as the sole parameter of the catch() method, gets executed.
+
+   # to craete Promise structure we need Promise Constructor.
+    - new Promise();
+    Syntax- new Promise(function(resolve,reject){}).
+           # new Promise((resolve,reject)=>{}).
+
+           # Handling Promise : 2 methods which we can chain to the promise object.
+           - then() callback: handle the resolved state.
+           - catch() callback: Handle the rehected state.
+           -finally() callback : After handling Completed.
+    */
+   // 1.declare Promise
+//   let promise= new Promise((resolve,reject)=>
+//    {
+//     // resolve(5);
+//     // reject("bye");
+//     setTimeout(()=>
+//     {
+//         // resolve();
+//         // reject();
+//         // if we use both statement at same time it give you first statement result.
+//         resolve(5);//passing Values.
+//         reject(10);//passing Values.
+//     },5000)
+//    })
+   //    console.log(promise);
+
+
+   // 2.handle Promise 
+
+//    promise.then(()=>
+//    {
+//     console.log('Hi Saurabh');
+//    }).catch(()=>{
+//     console.log("Bye Saurabh");
+//    })
+
+
+//Resolved and Rejected values
+// promise.then((resolvedValue)=>
+//    {
+//      console.log('Hi Saurabh',resolvedValue);
+//     }).catch((rejectedValue)=>{
+//      console.log("Bye Saurabh",rejectedValue);
+//    })
+
+
+//Examples: Api which takes 10sec to return [{name:Saurabh,bacthNo:ptweb11},{name:Bharatveer,batchNo:ptwe11}];
+// let data=[{name:"Saurabh",bacthNo:"ptweb11"},{name:"Bharatveer",batchNo:"ptwe11"}];
+
+// let Studentsdata = new Promise((resolve,reject)=>
+//    {
+//     setTimeout(()=>
+//     {
+//         // resolve(data);10 sec tiemout.
+//         reject("Sever Is Down") // 2 sec timeout.
+//      },2000)
+//    })
+
+//    Studentsdata.then((students)=>
+//    {
+//    console.log("Data Recieved From Server",students)
+//    }).catch((Error)=>
+//    {
+//     console.log("Some Error occured",Error);
+//    }).finally(()=>
+//    {
+//     console.log("Promise Handling Completed!!!!")
+//    })
+
+
+// Example of coin toss.
+
+//   let getRandom= ()=>
+//   {
+//     if(Math.random() < 0.5)
+//     {
+//         return 0;
+//     }
+//     else
+//     {
+//         return 1;
+//     }
+//   }
+// let getRandom = () => {
+//   return Math.random() < 0.5 ? 0 : 1; if else simple syntax
+// }
+
+// let Toss= new Promise((resolve,reject)=>{
+//   setTimeout(()=>
+//   {
+//     let coin=Math.round(getRandom());
+//     if(coin===0)
+//     {
+//         resolve("Heads");
+//         console.log(coin);
+//     }
+//     else
+//     {
+//         reject("Tails");
+//         console.log(coin);
+//     }
+//   },2000);
+// })
+
+// Toss.then((result)=>
+// {
+// console.log(result)
+// }).catch((error)=>
+// {
+//     console.log(error);
+// }).finally(()=>
+// {
+//     console.log("Toss has done");
+// })
+let queue=["Saurabh","Bharatveer","Hariom","Kaustav","Megha","Shweta"]
+
+
+let Register= document.getElementById("Btn");
+Register.addEventListener("click",data);
+   function data()
+   {
+    let Name = document.getElementById("name").value;
+    queue.push(Name);
+
+    let message = Name+" Your registration is sucessful. Please wait for your turn."
+
+    alert(message);
+
+let promise =new Promise((resolve,reject)=>
+{
+ let id= setInterval(()=>
+ {
+   let currenturn= queue.shift();// it removes elements from the front of an array 
+    console.log(queue);
+    document.getElementById("turn").textContent=currenturn;
+if(currenturn==Name)
+{
+    resolve(Name+" its your turn now");
+
+    clearInterval(id);
+}
+
+ },1000)
+})
+promise.then((res)=>
+{
+  alert(res)
+}).catch(()=>{
+
+})
+
+}
+
+
+
+</script>
+</html>
