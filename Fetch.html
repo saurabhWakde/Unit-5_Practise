@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Api and Fetch method</title>
+</head>
+<body>
+    <!-- <ul id="list"></ul> -->
+
+    <!--  fetch Example 1 users data  -->
+    <!-- <h1 > Users data</h1>
+    <div id="container"></div> -->
+
+    <!--  fetch example 2 products -->
+     <!-- <h1 >E_Commerce data</h1>
+    <div id="container"></div> -->
+
+<!-- Movie API Example -->
+ <h1>OMDB MOVIES</h1>
+<input type="text" id="search" placeholder="Search Movies Here">
+<button id="getdata">Search</button>
+<div id="container"></div> 
+</body>
+<script>
+/*
+API:
+- Application Programmer Interface.
+-Medium thhrough which client interacts with the sever.
+-Client 'request' from information, server 'respond' with information back to yhe client with the help of APIs.
+
+HTTPS REquest Mehods:
+--GET: Fetch any information from the server.
+--POST: Add/ Create information on the server, usually information to add(payload ) is sent to yhe server as well.
+--PUT: Update the information on the server.
+--DELETE; Delete the information on the server
+
+ 
+- When writing code for the Web, there are a large number of Web APIs available. Below is a list of all the APIs and interfaces (object types) that you may be able to use while developing your Web app or site.
+Web APIs are typically used with JavaScript, although this doesn't always have to be the case.
+
+
+fetch(): Used to handle API calls, return a promise which can be handled bu using .then() and .catch() methods
+
+*/
+
+
+// //API Example
+// let promise =fetch("https://reqres.in/api/users");
+// promise.then(()=>
+// {
+  // one way to do
+// }).catch(()=>
+// {
+
+// })+
+
+
+// Users Data API Example
+// fetch("https://reqres.in/api/users?").then((res)=>
+// {
+    
+//      // if we get Response status code
+//     // -200: Succesful.
+//     // -404: Not Found.
+//     return res.json()
+    
+// }).then((resdata)=>
+// {
+// console.log(resdata);
+// display(resdata.data);
+// }).catch((err)=>
+// {
+// console.log(err)
+// })
+
+// let display=function(user)
+// {
+//    user.forEach((user)=>
+//    {
+//       console.log(user.first_name, user.last_name);
+// //       let li=document.createElement("li")
+// // li.textContent=user.first_name+ " "+user.last_name;
+// // document.getElementById("list").appendChild(li)
+
+//    })
+// }
+
+// fetch Example 
+// fetch("https://reqres.in/api/users?").then((res)=>
+// {
+    
+//      // if we get Response status code
+//     // -200: Succesful.
+//     // -404: Not Found.
+//     return res.json()
+    
+// }).then((resdata)=>
+// {
+// console.log(resdata);
+// display(resdata.data);
+// }).catch((err)=>
+// {
+// console.log(error)
+// }).catch(()=>
+// {
+//     console.log(error);
+// })
+
+// let display=(user)=>
+// {
+//    user.forEach((user)=>
+//    {
+//       console.log(user.first_name, user.last_name);
+//    let name=document.createElement("p");
+//    let email=document.createElement("p");
+//    let image=document.createElement("img");
+//    name.textContent=user.first_name+" "+user.last_name;
+//    email.textContent=user.email;
+// //   setTimeout(()=>
+// //   {
+// //     image.src=(user.avatar);
+// //   },2000)
+//     image.src=(user.avatar);
+//    let container=document.getElementById("container");
+//    container.append(name,email,image)
+//    })
+// }
+
+
+/// E commerce Products data API Example
+// fetch("https://fakestoreapi.com/products").then((res)=>{
+   
+//     return res.json();
+// }).then((product)=>
+// {
+// console.log(product);
+// display(product)
+
+// }).catch((err)=>
+// {
+//     console.log(err);
+// }).catch(()=>
+// {
+//     console.log(err);
+// })
+
+// let display=(data)=>
+// {
+
+  
+//   data.forEach((data)=>
+//   {
+//     let title=document.createElement("p")
+//   let catrgory=document.createElement("p");
+//   let image=document.createElement("img");
+//     title.textContent=data.title;
+//     catrgory.textContent=data.category;
+//     image.src=(data.image);
+//     let container=document.getElementById("container");
+//     container.append(title,catrgory,image);
+
+//   })
+
+// }
+
+// Movie Data Base API Example Which Having restricted API Keys---
+
+let data=document.getElementById("getdata");
+
+
+data.addEventListener("click",sub)
+
+function sub()
+{
+    let inp=document.getElementById("search");
+
+    fetch("https://www.omdbapi.com/?apikey=51aae14e&t="+inp.value).then((res)=>
+{
+  return res.json();
+}).then((MovieData)=>
+{
+  console.log(MovieData)
+  if(inp.value==""||inp.value!=MovieData.Title)
+  {
+   alert("Please Write Correct Movie Name")
+  }
+  else
+  {
+    display(MovieData)
+  }
+
+}).catch((error)=>
+{
+console.log(error)
+}).catch((err)=>
+{
+console.log(err);
+})
+}
+
+function display(data)
+{
+    
+    let inp=document.getElementById("search");
+    inp.value="";
+        let title=document.createElement("p")
+  let Released=document.createElement("p");
+    title.innerHTML="";
+    Released.innerHTML="";
+  let poster=document.createElement("img");
+    title.textContent=data.Title;
+    Released.textContent=data.Released;
+    poster.src=(data.Poster);
+    let container=document.getElementById("container");
+    container.append(title,poster,Released);
+  
+}
+
+
+
+
+
+</script>
+</html>

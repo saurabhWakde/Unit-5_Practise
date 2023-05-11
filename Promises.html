@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promises </title>
+    <title>Promises</title>
 </head>
 <body>
     <h1> Vaccine Booth alert System</h1>
@@ -159,44 +159,44 @@ Flowchart showing how the Promise state transitions between pending, fulfilled, 
 // {
 //     console.log("Toss has done");
 // })
-// let queue=["Saurabh","Bharatveer","Hariom","Kaustav","Megha","Shweta"]
+let queue=["Saurabh","Bharatveer","Hariom","Kaustav","Megha","Shweta"]
 
 
-// let Register= document.getElementById("Btn");
-// Register.addEventListener("click",data);
-//    function data()
-//    {
-//     let Name = document.getElementById("name").value;
-//     queue.push(Name);
+let Register= document.getElementById("Btn");
+Register.addEventListener("click",data);
+   function data()
+   {
+    let Name = document.getElementById("name").value;
+    queue.push(Name);
 
-//     let message = Name+" Your registration is sucessful. Please wait for your turn."
+    let message = Name+" Your registration is sucessful. Please wait for your turn."
 
-//     alert(message);
+    alert(message);
 
-// let promise =new Promise((resolve,reject)=>
-// {
-//  let id= setInterval(()=>
-//  {
-//    let currenturn= queue.shift();// it removes elements from the front of an array 
-//     console.log(queue);
-//     document.getElementById("turn").textContent=currenturn;
-// if(currenturn==Name)
-// {
-//     resolve(Name+" its your turn now");
+let promise =new Promise((resolve,reject)=>
+{
+ let id= setInterval(()=>
+ {
+   let currenturn= queue.shift();// it removes elements from the front of an array 
+    console.log(queue);
+    document.getElementById("turn").textContent=currenturn;
+if(currenturn==Name)
+{
+    resolve(Name+" its your turn now");
 
-//     clearInterval(id);
-// }
+    clearInterval(id);
+}
 
-//  },1000)
-// })
-// promise.then((res)=>
-// {
-//   alert(res)
-// }).catch(()=>{
+ },1000)
+})
+promise.then((res)=>
+{
+  alert(res)
+}).catch(()=>{
 
-// })
+})
 
-// }
+}
 
 
 // if we have to handle multiple promises then we can use Promise.all() method
@@ -227,5 +227,25 @@ Promise.all([promise1,promise2]).then((val)=>
 {
     console.log("Bye  Saurabh",val);
 })
+
+
+//#ASync Await
+// 1.Declare Promise
+// let promise= new Promise((resolve,reject)=>
+//    {
+//     setTimeout(()=>
+//     {
+      
+//         resolve(5);//passing Values.
+//     },5000)
+//    })
+
+//    let handlePromise = async()=>
+//    {
+//    let resolvedValue = await promise
+//    console.log(resolvedValue);
+//    }
+//    handlePromise();
+
 </script>
 </html>
