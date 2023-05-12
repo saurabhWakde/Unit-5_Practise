@@ -202,19 +202,19 @@ console.log(err);
 
 function display(data)
 {
-    
+    // let {Title,Released,Poster}=data Es6 Syntax
     let inp=document.getElementById("search");
     inp.value="";
         let title=document.createElement("p")
-  let Released=document.createElement("p");
+  let released=document.createElement("p");
     title.innerHTML="";
-    Released.innerHTML="";
+    released.innerHTML="";
   let poster=document.createElement("img");
     title.textContent=data.Title;
-    Released.textContent=data.Released;
+    released.textContent=data.Released;
     poster.src=(data.Poster);
     let container=document.getElementById("container");
-    container.append(title,poster,Released);
+    container.append(title,poster,released);
   
 }
 

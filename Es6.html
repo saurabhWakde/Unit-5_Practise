@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Es6 Lecture $ Youtube API Example</title>
+</head>
+<body>
+    <!-- Youtube Api -->
+    <!-- <input type="text" name="" id="Search_bar" placeholder="Search here....">
+    <button id="Btn">Search</button>
+    <div id="container"></div> -->
+
+
+<!-- Translet text Example -->
+</body>
+<script>
+    // let obj=
+    // {
+    // Name:'Saurabh',
+    // City:'Sambhaji Nagar',
+    // }
+//Es5 Syntax of object
+
+//     let name =obj.Name;
+//     let city=obj.City
+// console.log(name+"  "+city);
+
+//Es6 Synatax
+
+// let {Name, City}=obj
+// console.log(Name+"  "+City);
+
+// let {Name:name/*Any variable name you can Assign but the Key name should be mandatory and proper*/, City:city}=obj// Assigning own variable name to object
+// console.log(name+"  "+city);
+
+// ECMAScript 6 was the second major revision to JavaScript.
+// ECMAScript 6 is also known as ES6 and ECMAScript 2015.
+
+// ES6 allows you to write the code in such a way that makes your code more modern and readable. By using ES6 features, we write less and do more, so the term 'Write less, do more' suits ES6.
+// let
+// The let keyword allows you to declare a variable with block scope.
+// Example
+// var x = 10;
+// // Here x is 10
+// {
+//   let x = 2;
+//   // Here x is 2
+// }
+// // Here x is 10
+// const
+// The const keyword allows you to declare a constant (a JavaScript variable with a constant value).
+
+// Constants are similar to let variables, except that the value cannot be changed.
+
+// Example
+// var x = 10;
+// x=20 //works
+
+// const y = 2;
+//  y=5 //will throw an error
+
+// Arrow Function
+// Arrow functions are a simpler and more compact way of writing functions in JavaScript. Two factors influenced the introduction of arrow functions: the need for shorter functions and the behavior of the this keyword.
+
+// ES5 Syntax
+// function (argument) {
+//     ...
+//     do something
+//     ...
+// }
+// ES6 Syntax
+// (args) => {
+//     do something
+// }
+// or...
+
+// (arg) => {} 
+// // the parantheses () are sometimes optionsal depending on no of arguments you have
+// // The curly brackets {} are also sometimes optional 
+// double = (x) => {
+//     return x*2
+//     }
+// //or
+// double = x => x*2
+// //or
+// double
+// //is the same as
+
+// function double(x){
+//     return x*2
+// }
+// var elements = [
+//     'Hydrogen',
+//     'Helium',
+//     'Lithium',
+//     'Beryllium'
+//   ];
+  
+//   var a,b,c,d,e,f,g;
+
+//   // This statement returns the array: [8, 6, 7, 9]
+//   a = elements.map(function(element) {
+//     return element.length;
+//   });
+  
+//   // The regular function above can be written as the arrow function below
+//   b = elements.map((element) => {
+//     return element.length;
+//   }); // [8, 6, 7, 9]
+  
+//   // When there is only one parameter, we can remove the surrounding parentheses
+//   c = elements.map(element => {
+//     return element.length;
+//   }); // [8, 6, 7, 9]
+  
+//   // When the only statement in an arrow function is `return`, we can remove `return` and remove
+//   // the surrounding curly brackets
+//   d = elements.map(element => element.length); // [8, 6, 7, 9]
+
+// Arrow functions do not have their own this keyword property.
+
+// var obj = { // does not create a new scope
+//     i: 10,
+//     b: () => console.log(this.i, this),
+//     c: function() {
+//       console.log(this.i, this);
+//     }
+//   }
+  
+//   obj.b(); // prints undefined, Window {...} (or the global object)
+//   obj.c(); // prints 10, Object {...}
+// for of loop
+// The JavaScript for/of statement loops through the values of iterable objects.
+
+// for/of lets you loop over data structures that are iterable such as Arrays, Strings.
+
+// The for/of loop has the following syntax:
+
+// for (variable of iterable) {
+//   // code block to be executed
+// }
+// variable - For every iteration, the value of the next property is assigned to the variable. Variable can be declared with const, let, or var.
+
+// iterable - An object that has iterable properties.
+
+// Looping over an Array
+
+// Example
+
+// var cars = ["BMW", "Volvo", "Mini"];
+// var x;
+
+// for (x of cars) {
+// console.log(x)
+
+// }
+// Object & Array destructuring
+// We know that we can:
+
+// add a single property,
+// extract a property
+// add multiple properties
+// to an object.
+
+// var person = {}
+// person.name = 'karthik';
+// person.id = 'sm_090';
+// person.location = 'India';
+// // creating property one by one
+
+// const name = person.name
+// const id = person.id
+// extracting property one by one
+
+// creating multiple properties together by using object literal notation
+// var person = {
+//     name:"karthik",
+//     id:"sm_090",
+//     location:"India"
+// }
+
+// var name = person.name
+// var id = person.id
+// var location = person.location
+// Destructuring allows us to extract multiple properties from an object
+
+
+// const { name, id, location } = person;
+// // The code can now be written in a better way now
+// // You can also destructure from return values from other functions.
+// // If you have an api call and it returns a large object.
+
+// function getData(){
+//     let count = 5
+//     let url = '127.0.0.1:8000'
+//     let obj = {
+//         count,
+//         url,
+//     }
+//     return obj
+// }
+
+// var { count, url } = getData()
+// Array Destructuring
+
+// We can do the same with arrays as well
+
+
+// // array destructuring
+
+// // standard way 
+// const arr = ['MASAI','INDIA','EDTECH']
+// var name = arr[0]
+// var location = arr[1]
+// var desc = arr[2]
+
+// // es6
+// var [name,location,desc] = arr
+// console.log(name,location,desc)
+
+// // using destructuring in split
+// name = 'albert sebastian'
+// const [fname, lname] = name.split(' ')
+// console.log(fname, lname)
+// Renaming field names:
+
+
+// // use const
+// var person = {
+//     f:'swanand',
+//     l:'kadam',
+//     i:'swanand7'
+// }
+
+// var {f:fname,l:lname,i:id} = person
+// Implementing in function arguments:
+
+
+
+// function fetchData(baseUrl,query,maxResults,orderby){
+
+// }
+
+// fetchData(' https://www.googleapis.com/youtube/v3/search','masai',10,'date')
+
+// // This can cause issues because we need to pass the exact order, and can make the function complicated
+// // Also this function doesnt handle default values
+
+// We can use object destructuring:
+
+// function fetchData({baseUrl,query,maxResults,orderby}){
+
+// }
+
+// // we can change the order
+// fetchData({
+//     baseUrl:'https://www.googleapis.com/youtube/v3/search',
+//     orderby:'date',
+//     maxResults:10,
+//     query:'masai'
+    
+// })
+// combining with default values:
+
+// function fetchData({baseUrl,query='',maxResults=null,orderby=null}){
+
+// }
+
+// // pass only some variables
+// fetchData({
+//     baseUrl:'https://www.googleapis.com/youtube/v3/search',
+//     query:'masai'
+    
+// })
+
+// // combine with default parameters
+
+// Spread
+// function sum(x, y, z) {
+//   return x + y + z; 
+// }
+// // Pass each elem of array as argument
+// sum(...[1,2,3]) == 6
+
+// // x = 1
+// // y = 2
+// // z = 3
+// In the example below the var abc and contains 3 values each. The spread operator basically lays out the entire array into seperate elements. alpha contains 6 elements.
+
+// var abc = ['a', 'b', 'c'];
+// var def = ['d', 'e', 'f'];
+// var alpha = [ ...abc, ...def ];
+// console.log(alpha)// alpha == ['a', 'b', 'c', 'd', 'e', 'f'];
+// Rest
+// The example below shows how the arguments after the first is combined into an array.
+
+// function f(x, ...y) {
+//   // y is an Array
+//   return x * y.length;
+// }
+// f(3, "hello", true) == 6
+// // In the example below, the arguments 2, 3 & 4 are taken into an array others.
+
+// function sum( first, ...others ) {
+//     for ( var i = 0; i < others.length; i++ )
+//         first += others[i];
+//     return first;
+// }
+// console.log(sum(1,2,3,4))// sum(1, 2, 3, 4) == 10;
+// // Go through the below PDF thoroughly.
+// // Cheat Sheet:- es6-1.pdf
+
+ 
+/// Youtube Api Key
+
+// const api_key="AIzaSyDd5Du9XdwKyYCGgXBZCapdN8fGL4I5-D4";
+// const api_url=" https://www.googleapis.com/youtube/v3";
+// let Button=document.getElementById("Btn");
+// let RESULTS=20;
+// let body=document.querySelector("body");
+
+// var sub=async()=>
+// {
+//     let searchItem=document.getElementById("Search_bar");
+//     let body=document.getElementById("container");
+//     body.innerHTML="";
+// {
+//   try
+//   {
+//   let res= await fetch(`${api_url}/search?part=snippet&key=${api_key}&type=video&maxResults=${RESULTS}&q=${searchItem.value}`);
+//   let data= await res.json();
+//   console.log(data);
+
+//   display(data.items)
+// //   console.log("sucessful");
+//   }
+//   catch(err)
+//   {
+//  console.log(err);
+//   }
+// }
+// }
+// Button.addEventListener("click",sub)
+
+// let display=(data)=>
+// {
+//     let body=document.getElementById("container");
+//    data.forEach(elem=>
+//    {
+//     let {id:{videoId}}=elem;
+//     console.log(videoId)
+//     let frame=document.createElement("iframe");
+//     frame.width="560";
+//     frame.height="315";
+//   frame.src="https://www.youtube.com/embed/"+videoId;
+//   body.appendChild(frame);
+//    })
+// }
+
+
+// console.log(result())
+
+</script>
+</html>
